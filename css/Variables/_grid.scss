@@ -1,0 +1,66 @@
+body {
+  background-color: rgb(18, 18, 18);
+}
+
+table td,
+table th {
+  border: none;
+}
+
+.main {
+  margin-top: 100px;
+  padding: 40px 30px;
+  background-color: black;
+  border-radius: 50px;
+
+  .k-grid {
+    border-width: 0px;
+    border-style: none !important;
+
+    .k-grid-header {
+      padding: 0px !important;
+      border-style: none !important;
+    }
+  }
+
+  .k-grid tr td {
+    border-top: 2px solid rgb(35, 39, 45);
+    border-right: 2px solid rgb(35, 39, 45);
+    background-color: rgb(18, 18, 18);
+    color: white;
+    &:first-child {
+      width: 110px;
+    }
+  }
+
+  .k-grid thead tr th {
+    border-top: 0px solid rgb(35, 39, 45);
+    border-right: 2px solid rgb(35, 39, 45);
+    background-color: rgb(18, 18, 18);
+    color: white;
+
+    &:first-child {
+      width: 110px;
+    }
+  }
+
+  .k-grid td {
+    &:hover tr {
+      color: blue;
+    }
+  }
+
+  .k-toolbar {
+    background-color: black !important;
+    flex-direction: row-reverse !important;
+    button {
+      background-color: rgb(35, 39, 45);
+      border-radius: 5px;
+      color: white;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+}
