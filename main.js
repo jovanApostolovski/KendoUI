@@ -1,4 +1,3 @@
-
 $("#grid").kendoGrid({
   toolbar: ["excel"],
   excel: {
@@ -131,11 +130,67 @@ $("#grid").kendoGrid({
       Jul2020: "0",
       Aug2020: "0",
     },
-  ], 
+  ],
 });
-
-
 
 $("#grid .k-grid-content").css({
   "overflow-y": "hidden",
 });
+
+
+
+
+
+
+
+
+
+var dataSource = new kendo.data.DataSource({
+  transport: {
+    read: {
+      url: "http://demos.telerik.com/kendo-ui/service/products",
+      dataType: "jsonp",
+    },
+  },
+  schema: {
+    parse: function (JSONObject) {
+      var products = [];
+      for (var i = 0; i < JSONObject.length; i++) {
+        var product = {
+          name: JSONObject[i].ProductName,
+          UnitPrice: JSONObject[i].UnitPrice,
+          UnitsInStock: JSONObject[i].UnitsInStock
+        };
+        products.push(product);
+      }
+      return products;
+    },
+  },
+});
+dataSource.fetch(function () {
+  var data = dataSource.data();
+  var product = data[0];
+  console.log(product.name);
+});
+
+$("#gridTwo").kendoGrid({
+  dataSource: dataSource,
+  columns: [
+    
+    {
+      field: "name",
+      title: "Name",
+    },
+    {
+      field: "UnitPrice",
+      title: "UnitPrice",
+    },
+    {
+      field: "UnitsInStock",
+      title: "UnitsInStock",
+    },
+  ],
+  
+});
+
+
