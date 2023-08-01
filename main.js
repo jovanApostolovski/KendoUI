@@ -141,44 +141,23 @@ $("#grid .k-grid-content").css({
 
 
 
+// SECOND GRID
 
-
-
-
-var dataSource = new kendo.data.DataSource({
-  transport: {
-    read: {
-      url: "http://demos.telerik.com/kendo-ui/service/products",
-      dataType: "jsonp",
-    },
-  },
-  schema: {
-    parse: function (JSONObject) {
-      var products = [];
-      for (var i = 0; i < JSONObject.length; i++) {
-        var product = {
-          name: JSONObject[i].ProductName,
-          UnitPrice: JSONObject[i].UnitPrice,
-          UnitsInStock: JSONObject[i].UnitsInStock
-        };
-        products.push(product);
-      }
-      return products;
-    },
-  },
-});
-dataSource.fetch(function () {
-  var data = dataSource.data();
-  var product = data[0];
-  console.log(product.name);
-});
 
 $("#gridTwo").kendoGrid({
-  dataSource: dataSource,
+  dataSource: {
+    transport: {
+    read: {
+    url: "http://demos.telerik.com/kendo-ui/service/products",
+    dataType: "jsonp",
+    }
+  }
+  } ,
+     
   columns: [
     
     {
-      field: "name",
+      field: "ProductName",
       title: "Name",
     },
     {
@@ -192,7 +171,26 @@ $("#gridTwo").kendoGrid({
   ],
   scrollable:false,
 
+  pageable: {
+    pageSize: 10
+  }
   
 });
 
 
+
+
+// var dataSource = new kendo.data.DataSource({
+//   transport: {
+//     read: {
+//       url: "https://demos.telerik.com/kendo-ui/service/products",
+//       dataType: "jsonp"
+//     }
+//   },
+//   pageSize: 10
+// });
+
+// $("#gridThree").kendoGrid({
+//   dataSource: dataSource,
+//   pageable: true
+// });
