@@ -190,6 +190,8 @@ $("#gridTwo").kendoGrid({
       title: "UnitsInStock",
     },
   ],
+  scrollable:false,
+
   
 });
 
